@@ -1,3 +1,4 @@
+'use client';
 import type { ActiveUserData } from '@/types/activeUserData';
 import type { MenuItem } from '@/types/menuItem';
 import { useState } from 'react';

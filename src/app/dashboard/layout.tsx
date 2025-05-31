@@ -1,3 +1,4 @@
+// app/dashboard/layout.tsx
 import { ReactNode } from 'react';
 import { SideNav } from '../components/SideNav';
 import type { ActiveUserData } from '@/types/activeUserData';
@@ -6,17 +7,17 @@ interface ILayoutProps {
   children: ReactNode;
 }
 
-function layout(props: ILayoutProps) {
-  //cal activeUserGetData
+export default function DashboardLayout({ children }: ILayoutProps) {
   const activeUser: ActiveUserData = {
     id: '',
     lastname: '',
     firstname: '',
   };
-  const { children } = props;
+
   return (
     <>
-      <SideNav menuItems={[]} activeUser={activeUser}></SideNav>
+      <SideNav menuItems={[]} activeUser={activeUser} />
+      {children}
     </>
   );
 }
