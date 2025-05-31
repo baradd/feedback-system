@@ -3,6 +3,7 @@ type MenuItem = {
   link: string;
   icon: any;
   badge?: string;
+  label?: string;
 };
 
 export type { MenuItem };
