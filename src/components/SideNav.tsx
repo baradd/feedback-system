@@ -16,7 +16,6 @@ function SideNav({ menuItems, activeUser }: SideNavProps) {
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
-  console.log(activeUser);
 
   return (
     <div
@@ -36,7 +35,7 @@ function SideNav({ menuItems, activeUser }: SideNavProps) {
       {/* Navigation */}
       <nav className="mt-4">
         <ul>
-          {/* {menuItems.map((item, index) => (
+          {menuItems.map((item, index) => (
             <li key={index}>
               <a
                 href="#"
@@ -52,10 +51,10 @@ function SideNav({ menuItems, activeUser }: SideNavProps) {
                     </span>
                   )}
                 </span>
-                {isExpanded && <span className="ml-4">{item.label}</span>}
+                {isExpanded && <span className="ml-4">{item.title}</span>}
               </a>
             </li>
-          ))} */}
+          ))}
         </ul>
       </nav>
 

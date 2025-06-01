@@ -3,6 +3,8 @@ import { ReactNode } from 'react';
 import { SideNav } from '@/components/SideNav';
 import type { ActiveUserData } from '@/types/activeUserData';
 import { apiFetch } from '@/utils/api-fetch';
+import { MenuItem } from '@/types/menuItem';
+import { AiFillDashboard } from 'react-icons/ai';
 
 interface IDashboardLayoutProps {
   children: ReactNode;
@@ -12,10 +14,16 @@ interface IDashboardLayoutProps {
 
 export default async function DashboardLayout({
   children,
-  menuItems,
 }: IDashboardLayoutProps) {
   let activeUser: ActiveUserData;
-
+  const menuItems: MenuItem[] = [
+    {
+      title: 'داشبورد',
+      link: '/dashboard',
+      icon: <AiFillDashboard size={20} />,
+      badge: '1',
+    },
+  ];
   activeUser = await apiFetch({
     method: 'GET',
     path: '/user/active',
