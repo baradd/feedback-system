@@ -21,7 +21,7 @@ function SideNav({ menuItems, activeUser }: SideNavProps) {
     <div
       className={`bg-white h-screen shadow-lg transition-all duration-300 ease-in-out ${
         isExpanded ? 'w-64' : 'w-20'
-      } relative`}
+      } relative flex flex-col`}
     >
       {/* Logo Area */}
       <div className="flex items-center h-16 p-4 border-b border-gray-200">
@@ -33,7 +33,7 @@ function SideNav({ menuItems, activeUser }: SideNavProps) {
       </div>
 
       {/* Navigation */}
-      <nav className="mt-4">
+      <nav className="mt-4 flex-1">
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
