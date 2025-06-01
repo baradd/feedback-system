@@ -85,33 +85,6 @@ function SideNav(props: SideNavProps) {
             )}
           </button>
         </div>
-
-        {/* Main Content */}
-        <div className="flex-1 p-8">
-          <h1 className="text-2xl font-bold mb-6 text-gray-800">
-            Modern Dashboard
-          </h1>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4">
-              Welcome to your workspace
-            </h2>
-            <p className="text-gray-600 mb-4">
-              This is an alternative sidebar design with a clean, modern
-              aesthetic. Try clicking the arrow button on the side to toggle the
-              sidebar width.
-            </p>
-            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
-              <h3 className="font-medium text-indigo-700 mb-2">Features:</h3>
-              <ul className="text-indigo-600 space-y-1">
-                <li>• Clean, light color scheme</li>
-                <li>• Notification badges</li>
-                <li>• Sidebar toggle with centered toggle button</li>
-                <li>• Hover effects for navigation items</li>
-                <li>• Smooth transitions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
       );
     </>
