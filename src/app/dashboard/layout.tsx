@@ -23,6 +23,18 @@ export default async function DashboardLayout({
       icon: <AiFillDashboard size={20} />,
       badge: '1',
     },
+    {
+      title: 'انتفادات و پیشنهادات',
+      link: '/dashboard',
+      icon: <AiFillDashboard size={20} />,
+      badge: '1',
+    },
+    {
+      title: 'داشبورد',
+      link: '/dashboard',
+      icon: <AiFillDashboard size={20} />,
+      badge: '1',
+    },
   ];
   activeUser = await apiFetch({
     method: 'GET',
