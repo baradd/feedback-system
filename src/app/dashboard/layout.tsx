@@ -4,7 +4,7 @@ import { SideNav } from '@/components/SideNav';
 import type { ActiveUserData } from '@/types/activeUserData';
 import { apiFetch } from '@/utils/api-fetch';
 import { MenuItem } from '@/types/menuItem';
-import { AiFillDashboard } from 'react-icons/ai';
+import { AiFillDashboard, AiFillBook, AiFillHome } from 'react-icons/ai';
 
 interface IDashboardLayoutProps {
   children: ReactNode;
@@ -21,19 +21,19 @@ export default async function DashboardLayout({
       title: 'داشبورد',
       link: '/dashboard',
       icon: <AiFillDashboard size={20} />,
-      badge: '1',
+      // badge: '1',
     },
     {
       title: 'انتفادات و پیشنهادات',
       link: '/dashboard',
-      icon: <AiFillDashboard size={20} />,
+      icon: <AiFillBook size={20} />,
       badge: '1',
     },
     {
-      title: 'داشبورد',
+      title: 'شرکت ها',
       link: '/dashboard',
-      icon: <AiFillDashboard size={20} />,
-      badge: '1',
+      icon: <AiFillHome size={20} />,
+      // badge: '1',
     },
   ];
   activeUser = await apiFetch({
