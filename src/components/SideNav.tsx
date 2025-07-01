@@ -8,9 +8,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 interface SideNavProps {
   menuItems: MenuItem[];
   activeUser: ActiveUserData;
+  avatar?: string;
 }
 
-function SideNav({ menuItems, activeUser }: SideNavProps) {
+function SideNav({ menuItems, activeUser, avatar }: SideNavProps) {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleSidebar = () => {
@@ -65,7 +66,7 @@ function SideNav({ menuItems, activeUser }: SideNavProps) {
         }`}
       >
         <img
-          src={activeUser.avatar}
+          src={avatar}
           alt={activeUser.firstname}
           className="rounded-full object-cover"
           width={40}

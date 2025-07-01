@@ -41,7 +41,15 @@ export default async function DashboardLayout({
     path: '/user/active',
     cache: 'force-cache',
     token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyMjdlNTI3LWFkOTYtNDcyNi1iNDk1LTU4ZGY4MTk5ZDc2NSIsImZpcnN0bmFtZSI6ImJhcmFkIiwibGFzdG5hbWUiOiJUYXZhc3NvbGlhbiIsInRva2VuSWQiOiI2MjllZGNkOC1kMTcyLTQ3OWItYTAxZS1kZmZiZmQyZTVkMjUiLCJyZWZyZXNoVG9rZW5JZCI6ImViMTAwMGZjLWI2YTctNGYxNi04ZDQwLTE0ZjhhMTg0ZjdjMSIsImlhdCI6MTc0ODc3Njg1OCwiZXhwIjoxNzQ5MTM2ODU4LCJhdWQiOiJmZWVkYmFjayIsImlzcyI6ImZlZWRiYWNrIn0.Vo0JL9GYRR3cdEb40lTRjum55WG8fcee1Pciwi2iwEs',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAyZGNhNWQyLTQ2OWMtNGRkOS1iM2ExLTdmMmQyMjA2YmQ1ZiIsImZpcnN0bmFtZSI6ImRldiIsImxhc3RuYW1lIjoiZGV2IiwidG9rZW5JZCI6ImZkNGY0MjE5LTM5NDktNDU0Ny04OWFhLTNkYTAzZjY4NDNiMCIsInJlZnJlc2hUb2tlbklkIjoiNTdhZWU1OTktNTJmZC00MDdlLWFkZmMtYmY3MDUyZTZiZmE1IiwiaWF0IjoxNzUxMTk3OTk3LCJleHAiOjE3NTE1NTc5OTcsImF1ZCI6ImZlZWRiYWNrIiwiaXNzIjoiZmVlZGJhY2sifQ.rjTwGV0C0EJZWyFI_jQ1rcSkskmfTlBYD5KFcI8xK_o',
+  });
+
+  const activeUserFullData = await apiFetch({
+    method: 'GET',
+    path: `/user/${activeUser.id}`,
+    cache: 'default',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAyZGNhNWQyLTQ2OWMtNGRkOS1iM2ExLTdmMmQyMjA2YmQ1ZiIsImZpcnN0bmFtZSI6ImRldiIsImxhc3RuYW1lIjoiZGV2IiwidG9rZW5JZCI6ImZkNGY0MjE5LTM5NDktNDU0Ny04OWFhLTNkYTAzZjY4NDNiMCIsInJlZnJlc2hUb2tlbklkIjoiNTdhZWU1OTktNTJmZC00MDdlLWFkZmMtYmY3MDUyZTZiZmE1IiwiaWF0IjoxNzUxMTk3OTk3LCJleHAiOjE3NTE1NTc5OTcsImF1ZCI6ImZlZWRiYWNrIiwiaXNzIjoiZmVlZGJhY2sifQ.rjTwGV0C0EJZWyFI_jQ1rcSkskmfTlBYD5KFcI8xK_o',
   });
 
   return (
@@ -49,7 +57,11 @@ export default async function DashboardLayout({
       <div className="flex-1 overflow-auto text-black" dir="rtl">
         {children}
       </div>
-      <SideNav menuItems={menuItems} activeUser={activeUser} />
+      <SideNav
+        menuItems={menuItems}
+        activeUser={activeUser}
+        avatar={`${process.env.NEXT_PUBLIC_EXTERNAL_API_URL}/static/avatars/${activeUser.id}/${activeUserFullData.avatar}`}
+      />
     </div>
   );
 }
