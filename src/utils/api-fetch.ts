@@ -1,4 +1,5 @@
 import { HttpMethod } from '@/types/httpMethods';
+import { AuthService } from '@/lib/api/auth.service';
 
 export interface IFetchOptions {
   method: HttpMethod;
@@ -10,19 +11,22 @@ export interface IFetchOptions {
 }
 
 export async function apiFetch(options: IFetchOptions) {
+
+  const authService = new AuthService()
+
+  const accessToken = authService.accessToken
   const {
     method,
     path,
     data,
     headers,
-    token,
     cache = 'no-cache',
   } = options || {};
   const config: RequestInit = {
     method,
     headers: {
       'content-type': 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }),
+      ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
       ...headers,
     },
     cache,
