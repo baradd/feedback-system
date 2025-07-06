@@ -1,0 +1,1 @@
+export type InputTypes = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'number' | 'range' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'checkbox' | 'radio' | 'toggle' | 'file' | 'hidden' | 'color' | 'submit' | 'reset' | 'button'
