@@ -1,5 +1,6 @@
 import { HttpMethod } from '@/types/httpMethods';
 import { AuthService } from '@/lib/api/auth.service';
+import Cookies from 'js-cookie';
 
 export interface IFetchOptions {
   method: HttpMethod;
@@ -12,9 +13,11 @@ export interface IFetchOptions {
 
 export async function apiFetch(options: IFetchOptions) {
 
-  const authService = new AuthService()
 
-  const accessToken = authService.accessToken
+  const accessToken = Cookies.get('accessToken')
+  if (!accessToken) {
+    // TODO: redirect to login or use refresh token
+  }
   const {
     method,
     path,
