@@ -1,6 +1,6 @@
 import { InputTypes } from '@/types/inputTypes';
 import React from 'react';
-export interface InputFieldProps {
+export interface IInputFieldProps {
   label?: string;
   name: string;
   type?: InputTypes;
@@ -15,7 +15,7 @@ export interface InputFieldProps {
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export function Input(props: InputFieldProps) {
+export function Input(props: IInputFieldProps) {
   const {
     name,
     className,
