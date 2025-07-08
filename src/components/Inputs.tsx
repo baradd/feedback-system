@@ -9,10 +9,10 @@ export interface IInputFieldProps {
   className?: string;
   error?: string;
   disabled?: boolean;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export function Input(props: IInputFieldProps) {

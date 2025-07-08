@@ -1,14 +1,18 @@
 import { apiFetch } from '@/utils/api-fetch';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
 export class AuthService {
   private _accessToken = '';
-  private _refreshToken = ''
+  private _refreshToken = '';
 
-  async login() {
+  async login(email: string, password: string) {
     const [token, refreshToken] = await apiFetch({
       method: 'POST',
       path: '/auth/login',
+      data: {
+        email,
+        password,
+      },
     });
     if (!token || !refreshToken) {
       throw new Error('Login failed');
@@ -17,10 +21,10 @@ export class AuthService {
   }
 
   private setTokens(accessToken: string, refreshToken: string) {
-    accessToken = accessToken
-    refreshToken = refreshToken
-    Cookies.set('accessToken', accessToken)
-    Cookies.set('refreshToken', refreshToken)
+    accessToken = accessToken;
+    refreshToken = refreshToken;
+    Cookies.set('accessToken', accessToken);
+    Cookies.set('refreshToken', refreshToken);
   }
 
   get accessToken() {
@@ -28,12 +32,11 @@ export class AuthService {
   }
 
   get refreshToken() {
-    return this._refreshToken
+    return this._refreshToken;
   }
 
   logout() {
-    Cookies.remove('accessToken')
-    Cookies.remove('refreshToken')
-
+    Cookies.remove('accessToken');
+    Cookies.remove('refreshToken');
   }
 }

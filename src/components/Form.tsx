@@ -5,9 +5,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 interface IFormProps<T extends ZodTypeAny> {
   method: 'GET' | 'POST' | 'DIALOG';
-  children: React.ReactNode;
+  children?: React.ReactNode;
   schema: T;
-  defaultValues: z.infer<T>;
+  defaultValues?: z.infer<T>;
   className?: string;
   label?: string;
   onSubmit: (values: z.infer<T>) => void;
