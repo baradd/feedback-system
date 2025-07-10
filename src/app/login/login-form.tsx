@@ -11,7 +11,7 @@ import { z } from 'zod';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
-  password: z.string().min(1),
+  password: z.string().min(2, { message: 'Password is too short' }),
 });
 
 type loginFormData = z.infer<typeof loginSchema>;
@@ -31,10 +31,6 @@ export const LoginForm: React.FC = () => {
   });
 
   const onSubmit = async (values: loginFormData) => {
-    //call login
-    console.log('submitted');
-    console.log(values);
-
     const authService = new AuthService();
     const response = await authService.login(values.email, values.password);
   };
@@ -53,6 +49,7 @@ export const LoginForm: React.FC = () => {
           label="E-mail"
           placeholder="example@example.com"
           type="email"
+          error={errors.email?.message}
         ></Input>
         <Input
           {...register('password')}
@@ -60,6 +57,7 @@ export const LoginForm: React.FC = () => {
           type="password"
           label="Password"
           placeholder="Password"
+          error={errors.password?.message}
         ></Input>
         <Button
           type="submit"
