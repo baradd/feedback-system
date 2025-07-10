@@ -10,22 +10,22 @@ interface IFormProps<T extends ZodTypeAny> {
   defaultValues?: z.infer<T>;
   className?: string;
   label?: string;
-  onSubmit: (values: z.infer<T>) => void;
+  onSubmit: () => any;
 }
 
 export function Form<T extends ZodTypeAny>(props: IFormProps<T>) {
   const { schema, defaultValues, onSubmit, className, children } = props;
 
-  const {
-    formState: { errors, isSubmitting },
-    register,
-    handleSubmit,
-  } = useForm<z.infer<T>>({ resolver: zodResolver(schema), defaultValues });
+  // const {
+  //   formState: { errors, isSubmitting },
+  //   register,
+  //   handleSubmit,
+  // } = useForm<z.infer<T>>({ resolver: zodResolver(schema), defaultValues });
 
   return (
     <>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={onSubmit}
         className={`${className} space-y-4 max-w-md p-4 border rounded shadow`}
       >
         {children}

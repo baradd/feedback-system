@@ -22,6 +22,7 @@ export const Button: React.FC<IButtonProps> = ({
   className,
   loading,
   disabled,
+  value,
   ...props
 }) => {
   return (
@@ -34,7 +35,9 @@ export const Button: React.FC<IButtonProps> = ({
           variant && variantStyles[variant],
           className
         )}
-      ></button>
+      >
+        {value}
+      </button>
     </>
   );
 };

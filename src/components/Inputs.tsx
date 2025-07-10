@@ -46,6 +46,7 @@ export function Input(props: IInputFieldProps) {
           )}
 
           <input
+            {...props}
             id={name}
             name={name}
             type={type}

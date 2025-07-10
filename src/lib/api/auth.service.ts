@@ -6,7 +6,7 @@ export class AuthService {
   private _refreshToken = '';
 
   async login(email: string, password: string) {
-    const [token, refreshToken] = await apiFetch({
+    const { token, refreshToken } = await apiFetch({
       method: 'POST',
       path: '/auth/login',
       data: {
@@ -14,6 +14,7 @@ export class AuthService {
         password,
       },
     });
+
     if (!token || !refreshToken) {
       throw new Error('Login failed');
     }
