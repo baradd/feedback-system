@@ -1,6 +1,7 @@
 import { HttpMethod } from '@/types/httpMethods';
 import { AuthService } from '@/lib/api/auth.service';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 export interface IFetchOptions {
   method: HttpMethod;
@@ -47,4 +48,10 @@ export async function apiFetch(options: IFetchOptions) {
   }
 
   return response;
+}
+
+
+export function toastError(error: unknown, fallback = 'Something went wrong') {
+  const message = error instanceof Error ? error.message : typeof error === 'string' ? error : fallback
+  toast.error(message)
 }

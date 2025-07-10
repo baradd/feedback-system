@@ -4,6 +4,7 @@ import { Button } from '@/components/Button';
 import { Form } from '@/components/Form';
 import { Input } from '@/components/Inputs';
 import { AuthService } from '@/lib/api/auth.service';
+import { toastError } from '@/utils/api-fetch';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -31,8 +32,12 @@ export const LoginForm: React.FC = () => {
   });
 
   const onSubmit = async (values: loginFormData) => {
-    const authService = new AuthService();
-    const response = await authService.login(values.email, values.password);
+    try {
+      const authService = new AuthService();
+      const response = await authService.login(values.email, values.password);
+    } catch (error) {
+      toastError(error);
+    }
   };
 
   return (
